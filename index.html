@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Site</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #0f0f0f;
+      color: #ffffff;
+    }
+
+    header {
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #00ff88;
+      font-size: 1.6rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #00ff88;
+    }
+
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: #cccccc;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background: #00ff88;
+      color: #000;
+      padding: 14px 28px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #00cc6e;
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #080808;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>SuaMarca</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h2>Seu site profissional</h2>
+      <p>
+        Um site simples, moderno e focado em gerar contatos diretos pelo WhatsApp.
+      </p>
+      <a
+        href="https://wa.me/5545988080346"
+        class="btn"
+        target="_blank"
+      >
+        Falar no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <p style="margin-top: 16px;">
+      Clique no link abaixo para falar direto comigo:
+    </p>
+    <p style="margin-top: 16px;">
+      <a
+        href="https://wa.me/5545988080346"
+        target="_blank"
+        style="color:#00ff88; font-size:1.2rem; text-decoration:none;"
+      >
+        📱 WhatsApp: (45) 98808-0346
+      </a>
+    </p>
+  </section>
+
+  <footer>
+    © 2026 - Todos os direitos reservados
+  </footer>
+
+</body>
+</html>
 
