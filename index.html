@@ -1,69 +1,77 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crie Seu Site</title>
+  <title>Crie Seu Site | Premium</title>
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
     }
 
     body {
-      background: #0f0f0f;
-      color: #fff;
+      background: #0b0b0b;
+      color: #ffffff;
     }
 
     header {
-      padding: 20px 8%;
+      padding: 24px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid #1a1a1a;
     }
 
     header h1 {
-      color: #00ff88;
       font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+
+    header h1 span {
+      color: #00ff88;
     }
 
     nav a {
-      color: #fff;
+      color: #aaa;
+      margin-left: 24px;
       text-decoration: none;
-      margin-left: 20px;
+      font-size: 0.95rem;
     }
 
     nav a:hover {
-      color: #00ff88;
+      color: #fff;
     }
 
     .hero {
-      padding: 80px 8%;
+      padding: 100px 8%;
       text-align: center;
     }
 
     .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 16px;
+      font-size: 3.2rem;
+      margin-bottom: 20px;
     }
 
     .hero p {
       color: #ccc;
-      margin-bottom: 32px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
       font-size: 1.1rem;
     }
 
     .btn {
       background: #00ff88;
       color: #000;
-      padding: 14px 30px;
+      padding: 14px 34px;
+      border-radius: 30px;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+      font-weight: 600;
+      transition: 0.3s;
     }
 
     .btn:hover {
@@ -71,135 +79,165 @@
     }
 
     section {
-      padding: 80px 8%;
+      padding: 90px 8%;
     }
 
     .plans {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
     }
 
     .plan {
-      background: #1a1a1a;
-      padding: 32px;
-      border-radius: 16px;
+      background: #141414;
+      padding: 40px 30px;
+      border-radius: 20px;
+      border: 1px solid #1f1f1f;
       text-align: center;
     }
 
     .plan h3 {
-      color: #00ff88;
+      font-size: 1.4rem;
       margin-bottom: 12px;
     }
 
     .price {
-      font-size: 2rem;
-      margin: 16px 0;
+      font-size: 2.4rem;
+      color: #00ff88;
+      margin: 20px 0;
     }
 
     .plan ul {
       list-style: none;
-      margin-bottom: 24px;
-      color: #ccc;
+      color: #bbb;
+      margin-bottom: 30px;
     }
 
     .plan ul li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+    }
+
+    .checkout {
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .checkout a {
+      background: transparent;
+      border: 1px solid #00ff88;
+      color: #00ff88;
+      padding: 12px 26px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .checkout a:hover {
+      background: #00ff88;
+      color: #000;
+    }
+
+    .trust {
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 40px;
     }
 
     footer {
-      background: #080808;
-      text-align: center;
+      background: #050505;
       padding: 30px;
-      color: #777;
+      text-align: center;
+      color: #666;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>CrieSeuSite</h1>
-    <nav>
-      <a href="#">Início</a>
-      <a href="#planos">Planos</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
+<header>
+  <h1>Crie<span>Seu</span>Site</h1>
+  <nav>
+    <a href="#">Início</a>
+    <a href="#planos">Planos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h2>Seu site profissional em poucos cliques</h2>
-    <p>
-      Escolha um plano, fale comigo no WhatsApp e tenha seu site no ar rápido.
-    </p>
-    <a href="#planos" class="btn">Ver Planos</a>
-  </section>
+<section class="hero">
+  <h2>Sites profissionais que geram confiança</h2>
+  <p>
+    Crie sua presença online com um site moderno, rápido e pensado para converter visitantes em clientes.
+  </p>
+  <a href="#planos" class="btn">Começar agora</a>
+</section>
 
-  <section id="planos">
-    <h2 style="margin-bottom:32px;">Planos de Sites</h2>
+<section id="planos">
+  <div class="plans">
 
-    <div class="plans">
-
-      <div class="plan">
-        <h3>Site Básico</h3>
-        <p class="price">R$ 299</p>
-        <ul>
-          <li>1 página</li>
-          <li>Botão WhatsApp</li>
-          <li>Design responsivo</li>
-          <li>Entrega rápida</li>
-        </ul>
-        <a href="https://wa.me/5545988080346" class="btn" target="_blank">
-          Quero esse
+    <div class="plan">
+      <h3>Site Básico</h3>
+      <p class="price">R$ 299</p>
+      <ul>
+        <li>1 página profissional</li>
+        <li>Botão WhatsApp</li>
+        <li>Design responsivo</li>
+      </ul>
+      <div class="checkout">
+        <a href="https://wa.me/5545988080346?text=Olá,%20quero%20finalizar%20a%20compra%20do%20Site%20Básico">
+          Finalizar compra
         </a>
       </div>
-
-      <div class="plan">
-        <h3>Site Profissional</h3>
-        <p class="price">R$ 599</p>
-        <ul>
-          <li>Até 4 páginas</li>
-          <li>WhatsApp integrado</li>
-          <li>Visual moderno</li>
-          <li>Ideal para negócios</li>
-        </ul>
-        <a href="https://wa.me/5545988080346" class="btn" target="_blank">
-          Quero esse
-        </a>
-      </div>
-
-      <div class="plan">
-        <h3>Landing Page</h3>
-        <p class="price">R$ 199</p>
-        <ul>
-          <li>Página de vendas</li>
-          <li>Foco em conversão</li>
-          <li>Instagram + anúncios</li>
-          <li>Alta performance</li>
-        </ul>
-        <a href="https://wa.me/5545988080346" class="btn" target="_blank">
-          Quero esse
-        </a>
-      </div>
-
     </div>
-  </section>
 
-  <section id="contato">
-    <h2>Contato</h2>
-    <p style="margin-top:16px;">
-      Fale direto comigo no WhatsApp:
-    </p>
-    <p style="margin-top:16px;">
-      <a href="https://wa.me/5545988080346" target="_blank" style="color:#00ff88; font-size:1.2rem; text-decoration:none;">
-        📱 (45) 98808-0346
-      </a>
-    </p>
-  </section>
+    <div class="plan">
+      <h3>Site Profissional</h3>
+      <p class="price">R$ 599</p>
+      <ul>
+        <li>Até 4 páginas</li>
+        <li>Visual premium</li>
+        <li>Ideal para empresas</li>
+      </ul>
+      <div class="checkout">
+        <a href="https://wa.me/5545988080346?text=Olá,%20quero%20finalizar%20a%20compra%20do%20Site%20Profissional">
+          Finalizar compra
+        </a>
+      </div>
+    </div>
 
-  <footer>
-    © 2026 - CrieSeuSite | Todos os direitos reservados
-  </footer>
+    <div class="plan">
+      <h3>Landing Page</h3>
+      <p class="price">R$ 199</p>
+      <ul>
+        <li>Página focada em vendas</li>
+        <li>Alta conversão</li>
+        <li>Instagram e anúncios</li>
+      </ul>
+      <div class="checkout">
+        <a href="https://wa.me/5545988080346?text=Olá,%20quero%20finalizar%20a%20compra%20da%20Landing%20Page">
+          Finalizar compra
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="trust">
+    ✔️ Atendimento humano &nbsp;•&nbsp; ✔️ Entrega rápida &nbsp;•&nbsp; ✔️ Sem mensalidade
+  </div>
+</section>
+
+<section id="contato">
+  <h2>Contato</h2>
+  <p style="margin-top:20px;">
+    WhatsApp: <a href="https://wa.me/5545988080346" style="color:#00ff88; text-decoration:none;">(45) 98808-0346</a>
+  </p>
+</section>
+
+<footer>
+  © 2026 CrieSeuSite — Todos os direitos reservados
+</footer>
 
 </body>
 </html>
