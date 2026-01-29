@@ -28,6 +28,26 @@
       z-index: -1;
     }
 
+    /* ANIMAÇÕES DE TEXTO */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes floatText {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0); }
+    }
+
     header {
       text-align: center;
       padding: 100px 20px 60px;
@@ -39,17 +59,25 @@
       border-radius: 22px;
       box-shadow: 0 30px 80px rgba(0,224,255,0.2);
       margin-bottom: 40px;
+      animation: fadeUp 1.2s ease forwards;
     }
 
     header h1 {
       font-size: 44px;
       font-weight: 700;
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    header h1 span {
+      color: #00e0ff;
     }
 
     header p {
       margin-top: 10px;
       font-size: 18px;
       color: #bbb;
+      animation: fadeUp 1.4s ease forwards;
+      animation-delay: 0.2s;
     }
 
     section {
@@ -60,6 +88,7 @@
       text-align: center;
       font-size: 34px;
       margin-bottom: 60px;
+      animation: floatText 6s ease-in-out infinite;
     }
 
     .cards {
@@ -99,7 +128,6 @@
       transform: translateZ(20px);
     }
 
-    /* CTA */
     .cta {
       margin-top: 100px;
       padding: 80px 30px;
@@ -107,6 +135,7 @@
       background: linear-gradient(135deg, #00e0ff, #0066ff);
       text-align: center;
       box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      animation: fadeUp 1.5s ease forwards;
     }
 
     .cta h2 {
@@ -126,16 +155,13 @@
       flex-wrap: wrap;
     }
 
-    /* Botão Premium */
     .btn {
       padding: 16px 42px;
       border-radius: 50px;
       font-weight: 600;
       text-decoration: none;
       color: #fff;
-      position: relative;
       transition: 0.3s;
-      transform-style: preserve-3d;
     }
 
     .btn-premium {
@@ -148,7 +174,6 @@
       box-shadow: 0 0 40px rgba(0,224,255,0.9);
     }
 
-    /* Botão WhatsApp */
     .btn-whats {
       background: linear-gradient(135deg, #25d366, #128c7e);
       box-shadow: 0 0 25px rgba(37,211,102,0.6);
@@ -187,7 +212,7 @@
 
 <header>
   <img src="banner.png" alt="Banner Lucas">
-  <h1>Lucas — Desenvolvedor & Criador Digital</h1>
+  <h1><span>Lucas</span> — Desenvolvedor & Criador Digital</h1>
   <p>18 anos • Sites • Softwares • Marcas • Marketing</p>
 </header>
 
