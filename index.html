@@ -43,6 +43,7 @@ header img{
   box-shadow:0 30px 80px rgba(0,224,255,.25);
 }
 
+/* ===== TITULO ===== */
 .hero-title{
   font-size:46px;
   font-weight:700;
@@ -75,6 +76,7 @@ section{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:40px;
+  perspective:1000px;
 }
 
 .card{
@@ -82,28 +84,26 @@ section{
   padding:35px;
   border-radius:22px;
   box-shadow:0 25px 60px rgba(0,0,0,.6);
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-10px);
+  transition:transform .1s ease, box-shadow .2s;
+  transform-style:preserve-3d;
 }
 
 .card h3{
   color:#00e0ff;
   font-size:20px;
   margin-bottom:12px;
+  transform:translateZ(30px);
 }
 
 .card p{
   font-size:15px;
   color:#ccc;
+  transform:translateZ(20px);
 }
 
 /* ===== CARD WHATS ===== */
 .card-idea{
   background:linear-gradient(135deg,#25d366,#128c7e);
-  color:#000;
   cursor:pointer;
   animation:pulse 3s infinite;
 }
@@ -150,6 +150,23 @@ section{
   transform:scale(1.1);
 }
 
+/* ===== BOTÃO MÚSICA ===== */
+.music-btn{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:#00e0ff;
+  color:#000;
+  font-size:22px;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 25px rgba(0,224,255,.9);
+  z-index:99;
+}
+
 /* ===== FOOTER ===== */
 footer{
   padding:50px 20px;
@@ -169,8 +186,14 @@ footer a{
 
 <div id="particles-js"></div>
 
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" id="musicBtn">🎵</button>
+
 <header>
-  <img src="banner.png" alt="Banner Lucas">
+  <img src="banner.png" alt="Banner Lucas" class="tilt">
 
   <h1 class="hero-title">
     <span>Lucas</span> — Desenvolvedor & Criador Digital
@@ -183,33 +206,33 @@ footer a{
   <h2 class="title">O que eu faço</h2>
 
   <div class="cards">
-    <div class="card">
+    <div class="card tilt">
       <h3>Desenvolvimento de Sites</h3>
       <p>Sites modernos, rápidos e com visual premium.</p>
     </div>
 
-    <div class="card">
+    <div class="card tilt">
       <h3>Criação de Logos</h3>
       <p>Identidade visual profissional para marcas.</p>
     </div>
 
-    <div class="card">
+    <div class="card tilt">
       <h3>Marcas de Roupas</h3>
       <p>Criação visual e estratégica de marcas.</p>
     </div>
 
-    <div class="card">
+    <div class="card tilt">
       <h3>Marketing Digital</h3>
       <p>Auxílio em posicionamento e presença online.</p>
     </div>
 
-    <a href="https://wa.me/5545988080346" target="_blank" class="card card-idea">
+    <a href="https://wa.me/5545988080346" target="_blank" class="card card-idea tilt">
       <h3>Tem outra ideia?</h3>
       <p>Clica aqui e me chama no WhatsApp.</p>
     </a>
   </div>
 
-  <div class="cta">
+  <div class="cta tilt">
     <h2>Vamos criar algo fora do comum?</h2>
     <p>Se você tem uma ideia, eu ajudo a dar forma.</p>
 
@@ -227,38 +250,34 @@ footer a{
 </footer>
 
 <script>
-/* PARTÍCULAS – efeito balões flutuantes 3D */
+/* ===== PARTÍCULAS ===== */
 particlesJS("particles-js",{
   particles:{
     number:{value:60},
     color:{value:"#00e0ff"},
-    shape:{type:"circle"},
-    opacity:{value:.6},
     size:{value:3,random:true},
-    line_linked:{
-      enable:true,
-      distance:150,
-      color:"#00e0ff",
-      opacity:.3,
-      width:1
-    },
-    move:{
-      enable:true,
-      speed:.8,
-      direction:"none",
-      random:true,
-      out_mode:"out"
-    }
+    line_linked:{enable:true,color:"#00e0ff",opacity:.3},
+    move:{speed:.8,random:true}
   },
-  interactivity:{
-    events:{
-      onhover:{enable:true,mode:"repulse"}
-    }
-  },
-  retina_detect:true
+  interactivity:{events:{onhover:{enable:true,mode:"repulse"}}}
 });
 
-/* TYPEWRITER */
+/* ===== EFEITO 3D MOUSE ===== */
+document.querySelectorAll('.tilt').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=e.clientX-r.left;
+    const y=e.clientY-r.top;
+    const rx=-(y-r.height/2)/15;
+    const ry=(x-r.width/2)/15;
+    card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='rotateX(0) rotateY(0)';
+  });
+});
+
+/* ===== TYPEWRITER ===== */
 const textos=[
   "18 anos • Sites • Softwares • Marcas",
   "Transformando ideias em experiências digitais",
@@ -286,6 +305,16 @@ function apagar(){
   }
 }
 escrever();
+
+/* ===== MÚSICA ===== */
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
+let playing=false;
+
+btn.onclick=()=>{
+  playing ? music.pause() : music.play();
+  playing=!playing;
+};
 </script>
 
 </body>
