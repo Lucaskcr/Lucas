@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lucas | Desenvolvedor & Criador Digital</title>
 
-  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Particles -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <style>
@@ -20,15 +17,14 @@
     }
 
     body {
-      background: #0b0b0b;
+      background: radial-gradient(circle at top, #0e1621, #050505);
       color: #fff;
       overflow-x: hidden;
     }
 
     #particles-js {
       position: fixed;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       z-index: -1;
     }
 
@@ -38,15 +34,15 @@
     }
 
     header img {
-      max-width: 900px;
       width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(0,224,255,0.15);
+      max-width: 900px;
+      border-radius: 22px;
+      box-shadow: 0 30px 80px rgba(0,224,255,0.2);
       margin-bottom: 40px;
     }
 
     header h1 {
-      font-size: 42px;
+      font-size: 44px;
       font-weight: 700;
     }
 
@@ -57,29 +53,32 @@
     }
 
     section {
-      padding: 80px 10%;
+      padding: 90px 10%;
     }
 
     .title {
-      font-size: 32px;
-      margin-bottom: 40px;
       text-align: center;
+      font-size: 34px;
+      margin-bottom: 60px;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      perspective: 1200px;
     }
 
     .card {
-      background: #121212;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      transition: 0.4s;
+      background: linear-gradient(145deg, #121212, #0b0b0b);
+      padding: 35px;
+      border-radius: 22px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transform-style: preserve-3d;
+      cursor: pointer;
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(50px);
     }
 
     .card.show {
@@ -87,58 +86,74 @@
       transform: translateY(0);
     }
 
-    .card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 0 25px rgba(0,224,255,0.2);
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(0,224,255,0.15),
+        transparent
+      );
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover::after {
+      opacity: 1;
     }
 
     .card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
       color: #00e0ff;
+      font-size: 20px;
+      margin-bottom: 12px;
+      transform: translateZ(30px);
     }
 
     .card p {
-      color: #ccc;
       font-size: 15px;
+      color: #ccc;
+      transform: translateZ(20px);
     }
 
     .cta {
-      background: linear-gradient(135deg, #00e0ff, #0077ff);
-      padding: 60px 30px;
+      margin-top: 100px;
+      padding: 70px 30px;
       border-radius: 30px;
+      background: linear-gradient(135deg, #00e0ff, #0066ff);
       text-align: center;
-      margin-top: 80px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
     }
 
     .cta h2 {
-      font-size: 30px;
+      font-size: 32px;
       margin-bottom: 15px;
     }
 
     .cta p {
-      font-size: 16px;
       margin-bottom: 25px;
+      font-size: 16px;
     }
 
     .cta a {
       background: #000;
-      color: #fff;
-      padding: 15px 35px;
+      padding: 15px 40px;
       border-radius: 50px;
+      color: #fff;
       text-decoration: none;
       font-weight: 600;
       transition: 0.3s;
     }
 
     .cta a:hover {
+      transform: scale(1.08);
       background: #111;
-      transform: scale(1.05);
     }
 
     footer {
-      margin-top: 100px;
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
       color: #aaa;
       font-size: 14px;
@@ -148,14 +163,14 @@
       display: inline-block;
       margin-top: 10px;
       color: #fff;
-      font-weight: 600;
       text-decoration: none;
+      font-weight: 600;
       transition: 0.3s;
     }
 
     footer a:hover {
       color: #00e0ff;
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -164,52 +179,50 @@
 <div id="particles-js"></div>
 
 <header>
-  <!-- BANNER -->
   <img src="banner.png" alt="Banner Lucas">
-
   <h1>Lucas — Desenvolvedor & Criador Digital</h1>
-  <p>18 anos • Transformando ideias em marcas, sites e experiências digitais</p>
+  <p>18 anos • Softwares • Sites • Marcas • Marketing</p>
 </header>
 
 <section>
-  <h2 class="title">O que eu faço</h2>
+  <h2 class="title">O que eu sei fazer</h2>
 
   <div class="cards">
     <div class="card">
       <h3>💻 Desenvolvimento de Sites</h3>
-      <p>Criação de sites modernos, rápidos, responsivos e com visual premium.</p>
+      <p>Sites rápidos, modernos e responsivos com visual premium.</p>
     </div>
 
     <div class="card">
       <h3>🎨 Criação de Logos</h3>
-      <p>Identidade visual profissional para marcas que querem se destacar.</p>
+      <p>Identidade visual profissional para marcas fortes.</p>
     </div>
 
     <div class="card">
       <h3>👕 Marcas de Roupas</h3>
-      <p>Desenvolvimento visual e estrutural de marcas do zero.</p>
+      <p>Construção visual e estratégica de marcas.</p>
     </div>
 
     <div class="card">
       <h3>📈 Marketing Digital</h3>
-      <p>Apoio estratégico para presença online e posicionamento.</p>
+      <p>Auxílio estratégico para crescimento online.</p>
     </div>
 
     <div class="card">
-      <h3>⚙️ Softwares & Sistemas</h3>
-      <p>Criação de soluções digitais personalizadas.</p>
+      <h3>⚙️ Softwares</h3>
+      <p>Soluções digitais sob medida.</p>
     </div>
   </div>
 
   <div class="cta">
-    <h2>Vamos tirar sua ideia do papel?</h2>
-    <p>Entre em contato comigo e crie algo único.</p>
+    <h2>Quer algo nesse nível?</h2>
+    <p>Entre em contato e vamos criar algo único.</p>
     <a href="https://www.instagram.com/lcs_rssr" target="_blank">Falar comigo</a>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 — Lucas | Desenvolvedor & Criador Digital</p>
+  <p>© 2026 — Lucas</p>
   <a href="https://www.instagram.com/lcs_rssr" target="_blank">@lcs_rssr</a>
 </footer>
 
@@ -224,17 +237,36 @@
     }
   });
 
-  // Animação dos cards ao rolar
+  // Animação ao rolar
   const cards = document.querySelectorAll(".card");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
+      if (entry.isIntersecting) entry.target.classList.add("show");
     });
   }, { threshold: 0.2 });
 
   cards.forEach(card => observer.observe(card));
+
+  // EFEITO 3D REAL (mouse)
+  cards.forEach(card => {
+    card.addEventListener("mousemove", e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = -(y - centerY) / 15;
+      const rotateY = (x - centerX) / 15;
+
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateX(0) rotateY(0)";
+    });
+  });
 </script>
 
 </body>
