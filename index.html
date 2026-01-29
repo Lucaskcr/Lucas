@@ -6,7 +6,6 @@
   <title>Lucas | Desenvolvedor & Criador Digital</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <style>
     * {
@@ -17,348 +16,218 @@
     }
 
     body {
-      background: radial-gradient(circle at top, #0e1621, #050505);
+      background: radial-gradient(circle at top, #0f2027, #000);
       color: #fff;
       overflow-x: hidden;
     }
 
-    #particles-js {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-    }
-
-    /* ===== TEXTOS ANIMADOS ===== */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-        filter: blur(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
-    }
-
     header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 100px 20px 60px;
+      padding: 40px 20px;
     }
 
-    header img {
+    header h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      transition: transform .2s ease;
+    }
+
+    header h1:hover {
+      transform: scale(1.08);
+    }
+
+    .typing {
+      font-size: 1.3rem;
+      color: #00ffd5;
+      height: 30px;
+    }
+
+    .banner {
+      margin-top: 40px;
       width: 100%;
       max-width: 900px;
-      border-radius: 22px;
-      box-shadow: 0 30px 80px rgba(0,224,255,0.2);
-      margin-bottom: 40px;
-      animation: fadeUp 1.2s ease forwards;
+      height: 260px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #00ffd5, #0066ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+      animation: float 6s ease-in-out infinite;
     }
 
-    /* TÍTULO REAGINDO AO MOUSE */
-    .hero-title {
-      font-size: 46px;
+    .banner h2 {
+      color: #000;
+      font-size: 2rem;
       font-weight: 700;
-      display: inline-block;
-      transition: transform 0.2s ease;
-      animation: fadeUp 1.2s ease forwards;
     }
 
-    .hero-title span {
-      color: #00e0ff;
-    }
-
-    /* TEXTO DIGITANDO */
-    .typewriter {
-      margin-top: 14px;
-      font-size: 18px;
-      color: #bbb;
-      min-height: 24px;
-      animation: fadeUp 1.4s ease forwards;
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
 
     section {
-      padding: 90px 10%;
-    }
-
-    .title {
-      text-align: center;
-      font-size: 34px;
-      margin-bottom: 60px;
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
     }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 40px;
-      perspective: 1200px;
+      gap: 30px;
     }
 
     .card {
-      background: linear-gradient(145deg, #121212, #0b0b0b);
-      padding: 35px;
-      border-radius: 22px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      transform-style: preserve-3d;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
       cursor: pointer;
-      opacity: 0;
-      transform: translateY(50px);
-    }
-
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .card h3 {
-      color: #00e0ff;
-      font-size: 20px;
-      margin-bottom: 12px;
-      transform: translateZ(30px);
+      margin-bottom: 10px;
+      color: #00ffd5;
     }
 
-    .card p {
-      font-size: 15px;
-      color: #ccc;
-      transform: translateZ(20px);
+    .card:hover {
+      box-shadow: 0 30px 80px rgba(0,0,0,.6);
     }
 
-    /* CARD CONVITE */
-    .card-idea {
-      background: linear-gradient(135deg, #00e0ff, #0066ff);
-      color: #000;
-    }
-
-    .card-idea h3 {
-      color: #000;
-    }
-
-    .card-idea p {
-      color: #111;
-      font-weight: 500;
-    }
-
-    /* CTA */
     .cta {
-      margin-top: 110px;
-      padding: 80px 30px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #00e0ff, #0066ff);
+      margin-top: 80px;
+      background: linear-gradient(135deg, #00ffd5, #0066ff);
+      color: #000;
+      padding: 40px;
+      border-radius: 25px;
       text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-      animation: fadeUp 1.5s ease forwards;
-    }
-
-    .cta h2 {
-      font-size: 34px;
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      margin-bottom: 35px;
-      font-size: 16px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.6);
     }
 
     .buttons {
+      margin-top: 20px;
       display: flex;
       justify-content: center;
-      gap: 25px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 16px 42px;
+      padding: 14px 30px;
       border-radius: 50px;
-      font-weight: 600;
       text-decoration: none;
-      color: #fff;
-      transition: 0.3s;
+      font-weight: 600;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .btn-premium {
+    .btn-primary {
       background: #000;
-      box-shadow: 0 0 25px rgba(0,224,255,0.5);
+      color: #00ffd5;
     }
 
-    .btn-premium:hover {
+    .btn-whatsapp {
+      background: #25d366;
+      color: #000;
+    }
+
+    .btn:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 40px rgba(0,224,255,0.9);
-    }
-
-    .btn-whats {
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      box-shadow: 0 0 25px rgba(37,211,102,0.6);
-    }
-
-    .btn-whats:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 40px rgba(37,211,102,0.9);
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
     }
 
     footer {
-      padding: 50px 20px;
+      padding: 40px 20px;
       text-align: center;
-      color: #aaa;
-      font-size: 14px;
+      opacity: .8;
     }
 
     footer a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #fff;
+      color: #00ffd5;
       text-decoration: none;
       font-weight: 600;
-      transition: 0.3s;
-    }
-
-    footer a:hover {
-      color: #00e0ff;
-      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
 
-<div id="particles-js"></div>
-
 <header>
-  <img src="banner.png" alt="Banner Lucas">
+  <h1>Lucas</h1>
+  <div class="typing" id="typing"></div>
 
-  <h1 class="hero-title">
-    <span>Lucas</span> — Desenvolvedor & Criador Digital
-  </h1>
-
-  <div class="typewriter" id="typewriter"></div>
+  <div class="banner">
+    <h2>Criação • Tecnologia • Design</h2>
+  </div>
 </header>
 
 <section>
-  <h2 class="title">O que eu faço</h2>
-
   <div class="cards">
-    <div class="card">
-      <h3>💻 Desenvolvimento de Sites</h3>
-      <p>Sites modernos, rápidos e com visual premium.</p>
-    </div>
-
-    <div class="card">
-      <h3>🎨 Criação de Logos</h3>
-      <p>Identidade visual profissional para marcas.</p>
-    </div>
-
-    <div class="card">
-      <h3>👕 Marcas de Roupas</h3>
-      <p>Criação visual e estratégica de marcas.</p>
-    </div>
-
-    <div class="card">
-      <h3>📈 Marketing Digital</h3>
-      <p>Auxílio em posicionamento e presença online.</p>
-    </div>
-
-    <div class="card card-idea">
-      <h3>💡 Tem outra ideia?</h3>
-      <p>Me chama, vamos conversar e ver como transformar isso em algo real.</p>
-    </div>
+    <div class="card"><h3>💻 Desenvolvedor de Softwares</h3><p>Soluções digitais modernas.</p></div>
+    <div class="card"><h3>🌐 Criador de Sites</h3><p>Sites rápidos e responsivos.</p></div>
+    <div class="card"><h3>🎨 Criação de Logos</h3><p>Identidade visual profissional.</p></div>
+    <div class="card"><h3>👕 Marcas de Roupas</h3><p>Do conceito ao design final.</p></div>
+    <div class="card"><h3>📈 Auxiliar de Marketing</h3><p>Estratégia e presença online.</p></div>
   </div>
 
   <div class="cta">
-    <h2>Vamos criar algo fora do comum?</h2>
-    <p>Se você tem uma ideia, eu ajudo a dar forma.</p>
+    <h2>Tem outra ideia?</h2>
+    <p>Me chama no WhatsApp e vamos transformar isso em algo real.</p>
 
     <div class="buttons">
-      <a href="https://www.instagram.com/lcs_rssr" target="_blank" class="btn btn-premium">
-        Fale comigo
-      </a>
-
-      <a href="https://wa.me/5545988080346" target="_blank" class="btn btn-whats">
-        WhatsApp
-      </a>
+      <a class="btn btn-primary" href="https://wa.me/5545988080346" target="_blank">Fale comigo</a>
+      <a class="btn btn-whatsapp" href="https://wa.me/5545988080346" target="_blank">WhatsApp</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 — Lucas</p>
-  <a href="https://www.instagram.com/lcs_rssr" target="_blank">@lcs_rssr</a>
+  <p>Instagram: <a href="https://instagram.com/lcs_rssr" target="_blank">@lcs_rssr</a></p>
+  <p>© 2026 - Lucas</p>
 </footer>
 
 <script>
-  /* Partículas */
-  particlesJS("particles-js", {
-    particles: {
-      number: { value: 70 },
-      color: { value: "#00e0ff" },
-      size: { value: 3 },
-      move: { speed: 1 }
+  const texts = [
+    "Desenvolvedor de Softwares",
+    "Criador de Sites",
+    "Designer de Marcas",
+    "Auxiliar de Marketing"
+  ];
+  let count = 0, index = 0;
+
+  function type() {
+    const current = texts[count];
+    document.getElementById("typing").textContent =
+      current.slice(0, ++index);
+
+    if (index === current.length) {
+      setTimeout(() => index = 0, 1500);
+      count = (count + 1) % texts.length;
     }
-  });
+    setTimeout(type, 100);
+  }
+  type();
 
-  /* Animação cards ao rolar */
-  const cards = document.querySelectorAll(".card");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("show");
-    });
-  }, { threshold: 0.2 });
-
-  cards.forEach(card => observer.observe(card));
-
-  /* 3D cards */
-  cards.forEach(card => {
-    card.addEventListener("mousemove", e => {
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
       const x = e.clientX - r.left;
       const y = e.clientY - r.top;
-      card.style.transform =
-        `rotateX(${-(y - r.height/2)/15}deg) rotateY(${(x - r.width/2)/15}deg)`;
+      card.style.transform = `rotateX(${-(y - r.height/2)/15}deg)
+                              rotateY(${(x - r.width/2)/15}deg)`;
     });
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "rotateX(0) rotateY(0)";
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0) rotateY(0)';
     });
   });
-
-  /* TÍTULO REAGE AO MOUSE */
-  const title = document.querySelector(".hero-title");
-  document.addEventListener("mousemove", e => {
-    const x = (window.innerWidth / 2 - e.clientX) / 40;
-    const y = (window.innerHeight / 2 - e.clientY) / 40;
-    title.style.transform = `translate(${x}px, ${y}px)`;
-  });
-
-  /* TYPEWRITER */
-  const texts = [
-    "18 anos • Sites • Softwares • Marcas",
-    "Transformando ideias em experiências digitais",
-    "Criando soluções modernas e confiáveis"
-  ];
-  let i = 0, j = 0, current = "";
-  const el = document.getElementById("typewriter");
-
-  function type() {
-    if (j < texts[i].length) {
-      current += texts[i][j++];
-      el.textContent = current;
-      setTimeout(type, 50);
-    } else {
-      setTimeout(erase, 2000);
-    }
-  }
-
-  function erase() {
-    if (j > 0) {
-      current = current.slice(0, -1);
-      el.textContent = current;
-      j--;
-      setTimeout(erase, 30);
-    } else {
-      i = (i + 1) % texts.length;
-      setTimeout(type, 500);
-    }
-  }
-
-  type();
 </script>
 
 </body>
