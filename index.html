@@ -1,212 +1,169 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lucas | Desenvolvedor & Criador Digital</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas | Desenvolvedor & Criador Digital</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
-    body {
-      background: radial-gradient(circle at top, #0e1621, #050505);
-      color: #fff;
-      overflow-x: hidden;
-    }
+body{
+  background:radial-gradient(circle at top,#0e1621,#050505);
+  color:#fff;
+  overflow-x:hidden;
+}
 
-    #particles-js {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-    }
+#particles-js{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
 
-    /* ===== ANIMAÇÕES ===== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-      to { opacity: 1; transform: translateY(0); filter: blur(0); }
-    }
+/* ===== HEADER ===== */
+header{
+  text-align:center;
+  padding:90px 20px 60px;
+}
 
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 25px rgba(37,211,102,.5); }
-      50% { box-shadow: 0 0 45px rgba(37,211,102,.9); }
-      100% { box-shadow: 0 0 25px rgba(37,211,102,.5); }
-    }
+header img{
+  width:100%;
+  max-width:900px;
+  height:auto;
+  border-radius:22px;
+  margin-bottom:40px;
+  object-fit:cover;
+  box-shadow:0 30px 80px rgba(0,224,255,.25);
+}
 
-    header {
-      text-align: center;
-      padding: 100px 20px 60px;
-    }
+.hero-title{
+  font-size:46px;
+  font-weight:700;
+  margin-bottom:10px;
+}
 
-    header img {
-      width: 100%;
-      max-width: 900px;
-      border-radius: 22px;
-      box-shadow: 0 30px 80px rgba(0,224,255,0.2);
-      margin-bottom: 40px;
-      animation: fadeUp 1.2s ease forwards;
-    }
+.hero-title span{
+  color:#00e0ff;
+}
 
-    .hero-title {
-      font-size: 46px;
-      font-weight: 700;
-      display: inline-block;
-      animation: fadeUp 1.2s ease forwards;
-    }
+.typewriter{
+  font-size:18px;
+  color:#bbb;
+  min-height:26px;
+}
 
-    .hero-title span {
-      color: #00e0ff;
-    }
+/* ===== SECTION ===== */
+section{
+  padding:90px 10%;
+}
 
-    .typewriter {
-      margin-top: 14px;
-      font-size: 18px;
-      color: #bbb;
-      min-height: 24px;
-      animation: fadeUp 1.4s ease forwards;
-    }
+.title{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:60px;
+}
 
-    section {
-      padding: 90px 10%;
-    }
+/* ===== CARDS ===== */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:40px;
+  perspective:1200px;
+}
 
-    .title {
-      text-align: center;
-      font-size: 34px;
-      margin-bottom: 60px;
-    }
+.card{
+  background:linear-gradient(145deg,#121212,#0b0b0b);
+  padding:35px;
+  border-radius:22px;
+  box-shadow:0 25px 60px rgba(0,0,0,.6);
+  transition:.25s;
+  transform-style:preserve-3d;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 40px;
-      perspective: 1200px;
-    }
+.card h3{
+  color:#00e0ff;
+  font-size:20px;
+  margin-bottom:12px;
+}
 
-    .card {
-      background: linear-gradient(145deg, #121212, #0b0b0b);
-      padding: 35px;
-      border-radius: 22px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      transform-style: preserve-3d;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(50px);
-      text-decoration: none;
-      color: inherit;
-    }
+.card p{
+  font-size:15px;
+  color:#ccc;
+}
 
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* ===== CARD WHATS ===== */
+.card-idea{
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  color:#000;
+  cursor:pointer;
+  animation:pulse 2.5s infinite;
+}
 
-    .card h3 {
-      color: #00e0ff;
-      font-size: 20px;
-      margin-bottom: 12px;
-      transform: translateZ(30px);
-    }
+.card-idea h3,
+.card-idea p{
+  color:#000;
+  font-weight:600;
+}
 
-    .card p {
-      font-size: 15px;
-      color: #ccc;
-      transform: translateZ(20px);
-    }
+@keyframes pulse{
+  0%{box-shadow:0 0 25px rgba(37,211,102,.6);}
+  50%{box-shadow:0 0 50px rgba(37,211,102,1);}
+  100%{box-shadow:0 0 25px rgba(37,211,102,.6);}
+}
 
-    /* ===== CARD WHATS ===== */
-    .card-idea {
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      color: #000;
-      animation: pulseGlow 2.5s infinite;
-      position: relative;
-      overflow: hidden;
-    }
+/* ===== CTA ===== */
+.cta{
+  margin-top:120px;
+  padding:80px 30px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#00e0ff,#0066ff);
+  text-align:center;
+  box-shadow:0 40px 80px rgba(0,0,0,.6);
+}
 
-    .card-idea h3,
-    .card-idea p {
-      color: #000;
-      font-weight: 600;
-    }
+.buttons{
+  margin-top:35px;
+}
 
-    .card-idea::after {
-      content: "🟢";
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 26px;
-      animation: pulseGlow 1.5s infinite;
-    }
+.btn{
+  padding:16px 44px;
+  border-radius:50px;
+  font-weight:600;
+  text-decoration:none;
+  color:#fff;
+  display:inline-block;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  box-shadow:0 0 30px rgba(37,211,102,.9);
+  transition:.3s;
+}
 
-    .card-idea:hover {
-      box-shadow: 0 0 60px rgba(37,211,102,1);
-      transform: scale(1.05);
-    }
+.btn:hover{
+  transform:scale(1.1);
+}
 
-    /* CTA */
-    .cta {
-      margin-top: 110px;
-      padding: 80px 30px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #00e0ff, #0066ff);
-      text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-      animation: fadeUp 1.5s ease forwards;
-    }
+/* ===== FOOTER ===== */
+footer{
+  padding:50px 20px;
+  text-align:center;
+  color:#aaa;
+}
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 16px 42px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      color: #fff;
-      transition: 0.3s;
-    }
-
-    .btn-whats {
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      box-shadow: 0 0 30px rgba(37,211,102,.8);
-    }
-
-    .btn:hover {
-      transform: scale(1.08);
-    }
-
-    footer {
-      padding: 50px 20px;
-      text-align: center;
-      color: #aaa;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    /* ===== LETRAS MAGNÉTICAS ===== */
-    .magnetic span {
-      display: inline-block;
-      transition: transform 0.15s ease;
-    }
-  </style>
+footer a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
+</style>
 </head>
+
 <body>
 
 <div id="particles-js"></div>
@@ -214,137 +171,98 @@
 <header>
   <img src="banner.png" alt="Banner Lucas">
 
-  <h1 class="hero-title magnetic">
+  <h1 class="hero-title">
     <span>Lucas</span> — Desenvolvedor & Criador Digital
   </h1>
 
-  <div class="typewriter magnetic" id="typewriter"></div>
+  <div class="typewriter" id="typewriter"></div>
 </header>
 
 <section>
-  <h2 class="title magnetic">O que eu faço</h2>
+  <h2 class="title">O que eu faço</h2>
 
   <div class="cards">
-    <div class="card magnetic">
-      <h3>💻 Desenvolvimento de Sites</h3>
+    <div class="card">
+      <h3>Desenvolvimento de Sites</h3>
       <p>Sites modernos, rápidos e com visual premium.</p>
     </div>
 
-    <div class="card magnetic">
-      <h3>🎨 Criação de Logos</h3>
+    <div class="card">
+      <h3>Criação de Logos</h3>
       <p>Identidade visual profissional para marcas.</p>
     </div>
 
-    <div class="card magnetic">
-      <h3>👕 Marcas de Roupas</h3>
+    <div class="card">
+      <h3>Marcas de Roupas</h3>
       <p>Criação visual e estratégica de marcas.</p>
     </div>
 
-    <div class="card magnetic">
-      <h3>📈 Marketing Digital</h3>
+    <div class="card">
+      <h3>Marketing Digital</h3>
       <p>Auxílio em posicionamento e presença online.</p>
     </div>
 
-    <!-- CARD WHATS -->
-    <a href="https://wa.me/5545988080346" target="_blank" class="card card-idea magnetic">
-      <h3>💡 Tem outra ideia?</h3>
-      <p>Clica aqui, me chama no WhatsApp e vamos criar algo fora do comum.</p>
+    <a href="https://wa.me/5545988080346" target="_blank" class="card card-idea">
+      <h3>Tem outra ideia?</h3>
+      <p>Clica aqui e me chama no WhatsApp.</p>
     </a>
   </div>
 
-  <div class="cta magnetic">
+  <div class="cta">
     <h2>Vamos criar algo fora do comum?</h2>
     <p>Se você tem uma ideia, eu ajudo a dar forma.</p>
 
     <div class="buttons">
-      <a href="https://wa.me/5545988080346" target="_blank" class="btn btn-whats">
-        💬 WhatsApp
+      <a href="https://wa.me/5545988080346" target="_blank" class="btn">
+        Chamar no WhatsApp
       </a>
     </div>
   </div>
 </section>
 
-<footer class="magnetic">
+<footer>
   <p>© 2026 — Lucas</p>
   <a href="https://www.instagram.com/lcs_rssr" target="_blank">@lcs_rssr</a>
 </footer>
 
 <script>
-  /* Partículas */
-  particlesJS("particles-js", {
-    particles: {
-      number: { value: 70 },
-      color: { value: "#00e0ff" },
-      size: { value: 3 },
-      move: { speed: 1 }
-    }
-  });
-
-  /* Scroll reveal */
-  const cards = document.querySelectorAll(".card");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => e.isIntersecting && e.target.classList.add("show"));
-  }, { threshold: 0.2 });
-  cards.forEach(c => observer.observe(c));
-
-  /* 3D cards */
-  cards.forEach(card => {
-    card.addEventListener("mousemove", e => {
-      const r = card.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width / 2;
-      const y = e.clientY - r.top - r.height / 2;
-      card.style.transform = `rotateX(${-y/15}deg) rotateY(${x/15}deg)`;
-    });
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "rotateX(0) rotateY(0)";
-    });
-  });
-
-  /* Typewriter */
-  const texts = [
-    "18 anos • Sites • Softwares • Marcas",
-    "Transformando ideias em experiências digitais",
-    "Criando soluções modernas e confiáveis"
-  ];
-  let i=0,j=0,current="";
-  const el=document.getElementById("typewriter");
-
-  function type(){
-    if(j<texts[i].length){
-      current+=texts[i][j++];
-      el.textContent=current;
-      setTimeout(type,50);
-    } else setTimeout(erase,2000);
+particlesJS("particles-js",{
+  particles:{
+    number:{value:70},
+    color:{value:"#00e0ff"},
+    size:{value:3},
+    move:{speed:1}
   }
-  function erase(){
-    if(j>0){
-      current=current.slice(0,-1);
-      el.textContent=current;
-      j--;
-      setTimeout(erase,30);
-    } else {
-      i=(i+1)%texts.length;
-      setTimeout(type,500);
-    }
-  }
-  type();
+});
 
-  /* Letras magnéticas */
-  document.querySelectorAll(".magnetic").forEach(el => {
-    const text = el.innerText;
-    el.innerHTML = text.split("").map(l => `<span>${l}</span>`).join("");
-    el.addEventListener("mousemove", e => {
-      el.querySelectorAll("span").forEach(s => {
-        const r = s.getBoundingClientRect();
-        const dx = e.clientX - (r.left + r.width/2);
-        const dy = e.clientY - (r.top + r.height/2);
-        s.style.transform = `translate(${dx/20}px, ${dy/20}px)`;
-      });
-    });
-    el.addEventListener("mouseleave", () => {
-      el.querySelectorAll("span").forEach(s => s.style.transform = "translate(0,0)");
-    });
-  });
+/* TYPEWRITER */
+const textos=[
+  "18 anos • Sites • Softwares • Marcas",
+  "Transformando ideias em experiências digitais",
+  "Criando soluções modernas e confiáveis"
+];
+let i=0,j=0,txt="";
+const el=document.getElementById("typewriter");
+
+function escrever(){
+  if(j<textos[i].length){
+    txt+=textos[i][j++];
+    el.textContent=txt;
+    setTimeout(escrever,50);
+  }else setTimeout(apagar,2000);
+}
+function apagar(){
+  if(j>0){
+    txt=txt.slice(0,-1);
+    el.textContent=txt;
+    j--;
+    setTimeout(apagar,30);
+  }else{
+    i=(i+1)%textos.length;
+    setTimeout(escrever,500);
+  }
+}
+escrever();
 </script>
 
 </body>
