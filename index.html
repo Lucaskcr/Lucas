@@ -2,139 +2,84 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lucas | Desenvolvedor & Criador Digital</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Particles -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background: #020617;
-      color: #e5e7eb;
+      background: #0b0b0b;
+      color: #fff;
       overflow-x: hidden;
     }
 
-    /* PARTICLES CANVAS */
-    canvas#particles {
+    #particles-js {
       position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
-    /* HERO */
-    header.hero {
-      position: relative;
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(2,6,23,0.85), rgba(2,6,23,0.95)),
-        url("banner.png") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    header {
       text-align: center;
-      padding: 40px 20px;
-      overflow: hidden;
+      padding: 100px 20px 60px;
     }
 
-    header.hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at top,
-        rgba(99,102,241,0.35),
-        transparent 60%
-      );
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
+    header img {
       max-width: 900px;
-      animation: fadeUp 1.2s ease;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0,224,255,0.15);
+      margin-bottom: 40px;
     }
 
-    .hero-content h1 {
-      font-size: clamp(2.8rem, 6vw, 4.8rem);
-      font-weight: 900;
-      background: linear-gradient(90deg, #38bdf8, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      color: #cbd5f5;
-      margin-bottom: 35px;
-      line-height: 1.7;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 16px 42px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #38bdf8, #6366f1);
-      color: #020617;
+    header h1 {
+      font-size: 42px;
       font-weight: 700;
-      text-decoration: none;
-      transition: transform .3s, box-shadow .3s;
-      box-shadow: 0 20px 50px rgba(56,189,248,.45);
     }
 
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 30px 70px rgba(99,102,241,.55);
+    header p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #bbb;
     }
 
     section {
-      padding: 100px 20px;
-      max-width: 1200px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
+      padding: 80px 10%;
     }
 
-    section h2 {
-      font-size: 2.6rem;
+    .title {
+      font-size: 32px;
+      margin-bottom: 40px;
       text-align: center;
-      margin-bottom: 25px;
     }
 
-    section .desc {
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 60px;
-      color: #b6c1ff;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    .grid {
+    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
     }
 
     .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 26px;
-      padding: 32px;
-      backdrop-filter: blur(12px);
-
+      background: #121212;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: 0.4s;
       opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
+      transform: translateY(40px);
     }
 
     .card.show {
@@ -143,142 +88,153 @@
     }
 
     .card:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 35px 80px rgba(0,0,0,.6);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 25px rgba(0,224,255,0.2);
     }
 
     .card h3 {
-      color: #93c5fd;
-      margin-bottom: 12px;
-      font-size: 1.3rem;
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #00e0ff;
     }
 
     .card p {
-      color: #c7d2fe;
-      line-height: 1.6;
+      color: #ccc;
+      font-size: 15px;
     }
 
     .cta {
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
-      color: #020617;
+      background: linear-gradient(135deg, #00e0ff, #0077ff);
+      padding: 60px 30px;
+      border-radius: 30px;
       text-align: center;
-      padding: 90px 30px;
-      border-radius: 45px;
-      box-shadow: 0 45px 110px rgba(56,189,248,.55);
-      position: relative;
-      z-index: 2;
+      margin-top: 80px;
     }
 
-    .cta h2 { color: #020617; margin-bottom: 15px; }
+    .cta h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
 
     .cta p {
-      font-size: 1.2rem;
-      max-width: 720px;
-      margin: 0 auto 35px;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .cta a {
+      background: #000;
+      color: #fff;
+      padding: 15px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #111;
+      transform: scale(1.05);
     }
 
     footer {
+      margin-top: 100px;
+      padding: 40px 20px;
       text-align: center;
-      padding: 45px 20px;
-      color: #94a3b8;
-      font-size: .9rem;
-      border-top: 1px solid #1e293b;
-      position: relative;
-      z-index: 2;
+      color: #aaa;
+      font-size: 14px;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    footer a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #00e0ff;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
 
-<canvas id="particles"></canvas>
+<div id="particles-js"></div>
 
-<header class="hero">
-  <div class="hero-content">
-    <h1>Lucas</h1>
-    <p>
-      Desenvolvedor de softwares, criador de sites e marcas digitais.<br>
-      Transformo ideias em experiências modernas e profissionais.
-    </p>
-    <a class="btn" href="https://wa.me/5545988080346">Entrar em contato</a>
-  </div>
+<header>
+  <!-- BANNER -->
+  <img src="banner.png" alt="Banner Lucas">
+
+  <h1>Lucas — Desenvolvedor & Criador Digital</h1>
+  <p>18 anos • Transformando ideias em marcas, sites e experiências digitais</p>
 </header>
 
 <section>
-  <h2>O que eu sei fazer</h2>
-  <p class="desc">Áreas que domino e aplico em projetos reais.</p>
+  <h2 class="title">O que eu faço</h2>
 
-  <div class="grid">
-    <div class="card"><h3>💻 Desenvolvimento de Softwares</h3><p>Sistemas e automações personalizadas.</p></div>
-    <div class="card"><h3>🌐 Criação de Sites</h3><p>Sites modernos, rápidos e responsivos.</p></div>
-    <div class="card"><h3>🎨 Criação de Logos</h3><p>Identidade visual profissional.</p></div>
-    <div class="card"><h3>👕 Marcas de Roupas</h3><p>Conceito e identidade para moda.</p></div>
-    <div class="card"><h3>📈 Marketing Digital</h3><p>Posicionamento e estratégia online.</p></div>
-    <div class="card"><h3>✨ Design Criativo</h3><p>Visual premium e moderno.</p></div>
+  <div class="cards">
+    <div class="card">
+      <h3>💻 Desenvolvimento de Sites</h3>
+      <p>Criação de sites modernos, rápidos, responsivos e com visual premium.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎨 Criação de Logos</h3>
+      <p>Identidade visual profissional para marcas que querem se destacar.</p>
+    </div>
+
+    <div class="card">
+      <h3>👕 Marcas de Roupas</h3>
+      <p>Desenvolvimento visual e estrutural de marcas do zero.</p>
+    </div>
+
+    <div class="card">
+      <h3>📈 Marketing Digital</h3>
+      <p>Apoio estratégico para presença online e posicionamento.</p>
+    </div>
+
+    <div class="card">
+      <h3>⚙️ Softwares & Sistemas</h3>
+      <p>Criação de soluções digitais personalizadas.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Vamos tirar sua ideia do papel?</h2>
+    <p>Entre em contato comigo e crie algo único.</p>
+    <a href="https://www.instagram.com/lcs_rssr" target="_blank">Falar comigo</a>
   </div>
 </section>
 
-<section class="cta">
-  <h2>Vamos criar algo profissional?</h2>
-  <p>Me chama no WhatsApp e vamos tirar sua ideia do papel.</p>
-  <a class="btn" href="https://wa.me/5545988080346">Falar comigo agora</a>
-</section>
-
 <footer>
-  © 2026 • Lucas — Desenvolvedor & Criador Digital
+  <p>© 2026 — Lucas | Desenvolvedor & Criador Digital</p>
+  <a href="https://www.instagram.com/lcs_rssr" target="_blank">@lcs_rssr</a>
 </footer>
 
 <script>
-  /* CARD ANIMATION */
-  const cards = document.querySelectorAll('.card');
+  // Partículas
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 70 },
+      color: { value: "#00e0ff" },
+      size: { value: 3 },
+      move: { speed: 1 }
+    }
+  });
+
+  // Animação dos cards ao rolar
+  const cards = document.querySelectorAll(".card");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('show');
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
     });
   }, { threshold: 0.2 });
+
   cards.forEach(card => observer.observe(card));
-
-  /* PARTICLES */
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
-
-  let w, h;
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  const particles = Array.from({ length: 80 }, () => ({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    r: Math.random() * 1.5 + 0.5,
-    dx: (Math.random() - 0.5) * 0.3,
-    dy: (Math.random() - 0.5) * 0.3
-  }));
-
-  function animate() {
-    ctx.clearRect(0, 0, w, h);
-    particles.forEach(p => {
-      p.x += p.dx;
-      p.y += p.dy;
-      if (p.x < 0 || p.x > w) p.dx *= -1;
-      if (p.y < 0 || p.y > h) p.dy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(99,102,241,0.5)';
-      ctx.fill();
-    });
-    requestAnimationFrame(animate);
-  }
-
-  animate();
 </script>
 
 </body>
