@@ -84,7 +84,7 @@ section{
   padding:35px;
   border-radius:22px;
   box-shadow:0 25px 60px rgba(0,0,0,.6);
-  transition:transform .1s ease, box-shadow .2s;
+  transition:transform .15s ease, box-shadow .2s;
   transform-style:preserve-3d;
 }
 
@@ -120,7 +120,7 @@ section{
   100%{box-shadow:0 0 20px rgba(37,211,102,.5);}
 }
 
-/* ===== CTA ===== */
+/* ===== CTA (ANIMAÇÃO REDUZIDA) ===== */
 .cta{
   margin-top:120px;
   padding:80px 30px;
@@ -128,6 +128,8 @@ section{
   background:linear-gradient(135deg,#00e0ff,#0066ff);
   text-align:center;
   box-shadow:0 40px 80px rgba(0,0,0,.6);
+  transition:transform .25s ease;
+  will-change:transform;
 }
 
 .buttons{
@@ -232,7 +234,8 @@ footer a{
     </a>
   </div>
 
-  <div class="cta tilt">
+  <!-- CTA COM EFEITO 3D SUAVE -->
+  <div class="cta tilt-soft">
     <h2>Vamos criar algo fora do comum?</h2>
     <p>Se você tem uma ideia, eu ajudo a dar forma.</p>
 
@@ -262,19 +265,38 @@ particlesJS("particles-js",{
   interactivity:{events:{onhover:{enable:true,mode:"repulse"}}}
 });
 
-/* ===== EFEITO 3D MOUSE ===== */
-document.querySelectorAll('.tilt').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
+/* ===== TILT NORMAL (CARDS) ===== */
+document.querySelectorAll('.tilt').forEach(el=>{
+  if(el.classList.contains('tilt-soft')) return;
+
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
     const x=e.clientX-r.left;
     const y=e.clientY-r.top;
     const rx=-(y-r.height/2)/15;
     const ry=(x-r.width/2)/15;
-    card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+    el.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
   });
-  card.addEventListener('mouseleave',()=>{
-    card.style.transform='rotateX(0) rotateY(0)';
+
+  el.addEventListener('mouseleave',()=>{
+    el.style.transform='rotateX(0) rotateY(0)';
   });
+});
+
+/* ===== TILT SUAVE (CTA) ===== */
+const cta=document.querySelector('.tilt-soft');
+
+cta.addEventListener('mousemove',e=>{
+  const r=cta.getBoundingClientRect();
+  const x=e.clientX-r.left;
+  const y=e.clientY-r.top;
+  const rx=-(y-r.height/2)/40;
+  const ry=(x-r.width/2)/40;
+  cta.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+});
+
+cta.addEventListener('mouseleave',()=>{
+  cta.style.transform='rotateX(0) rotateY(0)';
 });
 
 /* ===== TYPEWRITER ===== */
