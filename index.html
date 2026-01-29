@@ -28,17 +28,16 @@
       z-index: -1;
     }
 
+    /* ===== ANIMAÇÕES ===== */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-        filter: blur(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
+      from { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 25px rgba(37,211,102,.5); }
+      50% { box-shadow: 0 0 45px rgba(37,211,102,.9); }
+      100% { box-shadow: 0 0 25px rgba(37,211,102,.5); }
     }
 
     header {
@@ -59,7 +58,6 @@
       font-size: 46px;
       font-weight: 700;
       display: inline-block;
-      transition: transform 0.2s ease;
       animation: fadeUp 1.2s ease forwards;
     }
 
@@ -124,20 +122,36 @@
       transform: translateZ(20px);
     }
 
+    /* ===== CARD WHATS ===== */
     .card-idea {
-      background: linear-gradient(135deg, #00e0ff, #0066ff);
+      background: linear-gradient(135deg, #25d366, #128c7e);
       color: #000;
+      animation: pulseGlow 2.5s infinite;
+      position: relative;
+      overflow: hidden;
     }
 
-    .card-idea h3 {
-      color: #000;
-    }
-
+    .card-idea h3,
     .card-idea p {
-      color: #111;
-      font-weight: 500;
+      color: #000;
+      font-weight: 600;
     }
 
+    .card-idea::after {
+      content: "🟢";
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 26px;
+      animation: pulseGlow 1.5s infinite;
+    }
+
+    .card-idea:hover {
+      box-shadow: 0 0 60px rgba(37,211,102,1);
+      transform: scale(1.05);
+    }
+
+    /* CTA */
     .cta {
       margin-top: 110px;
       padding: 80px 30px;
@@ -146,16 +160,6 @@
       text-align: center;
       box-shadow: 0 40px 80px rgba(0,0,0,0.6);
       animation: fadeUp 1.5s ease forwards;
-    }
-
-    .cta h2 {
-      font-size: 34px;
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      margin-bottom: 35px;
-      font-size: 16px;
     }
 
     .buttons {
@@ -174,14 +178,9 @@
       transition: 0.3s;
     }
 
-    .btn-premium {
-      background: #000;
-      box-shadow: 0 0 25px rgba(0,224,255,0.5);
-    }
-
     .btn-whats {
       background: linear-gradient(135deg, #25d366, #128c7e);
-      box-shadow: 0 0 25px rgba(37,211,102,0.6);
+      box-shadow: 0 0 30px rgba(37,211,102,.8);
     }
 
     .btn:hover {
@@ -196,11 +195,15 @@
     }
 
     footer a {
-      display: inline-block;
-      margin-top: 10px;
       color: #fff;
       text-decoration: none;
       font-weight: 600;
+    }
+
+    /* ===== LETRAS MAGNÉTICAS ===== */
+    .magnetic span {
+      display: inline-block;
+      transition: transform 0.15s ease;
     }
   </style>
 </head>
@@ -211,70 +214,63 @@
 <header>
   <img src="banner.png" alt="Banner Lucas">
 
-  <h1 class="hero-title">
+  <h1 class="hero-title magnetic">
     <span>Lucas</span> — Desenvolvedor & Criador Digital
   </h1>
 
-  <div class="typewriter" id="typewriter"></div>
+  <div class="typewriter magnetic" id="typewriter"></div>
 </header>
 
 <section>
-  <h2 class="title">O que eu faço</h2>
+  <h2 class="title magnetic">O que eu faço</h2>
 
   <div class="cards">
-    <div class="card">
+    <div class="card magnetic">
       <h3>💻 Desenvolvimento de Sites</h3>
       <p>Sites modernos, rápidos e com visual premium.</p>
     </div>
 
-    <div class="card">
+    <div class="card magnetic">
       <h3>🎨 Criação de Logos</h3>
       <p>Identidade visual profissional para marcas.</p>
     </div>
 
-    <div class="card">
+    <div class="card magnetic">
       <h3>👕 Marcas de Roupas</h3>
       <p>Criação visual e estratégica de marcas.</p>
     </div>
 
-    <div class="card">
+    <div class="card magnetic">
       <h3>📈 Marketing Digital</h3>
       <p>Auxílio em posicionamento e presença online.</p>
     </div>
 
-    <!-- CARD COM WHATSAPP -->
-    <a 
-      href="https://wa.me/5545988080346"
-      target="_blank"
-      class="card card-idea"
-    >
+    <!-- CARD WHATS -->
+    <a href="https://wa.me/5545988080346" target="_blank" class="card card-idea magnetic">
       <h3>💡 Tem outra ideia?</h3>
-      <p>Me chama no WhatsApp e vamos ver como transformar isso em algo real.</p>
+      <p>Clica aqui, me chama no WhatsApp e vamos criar algo fora do comum.</p>
     </a>
   </div>
 
-  <div class="cta">
+  <div class="cta magnetic">
     <h2>Vamos criar algo fora do comum?</h2>
     <p>Se você tem uma ideia, eu ajudo a dar forma.</p>
 
     <div class="buttons">
-      <a href="https://www.instagram.com/lcs_rssr" target="_blank" class="btn btn-premium">
-        Fale comigo
-      </a>
-
       <a href="https://wa.me/5545988080346" target="_blank" class="btn btn-whats">
-        WhatsApp
+        💬 WhatsApp
       </a>
     </div>
   </div>
 </section>
 
-<footer>
+<footer class="magnetic">
   <p>© 2026 — Lucas</p>
   <a href="https://www.instagram.com/lcs_rssr" target="_blank">@lcs_rssr</a>
 </footer>
 
 <script>
+  /* Partículas */
   particlesJS("particles-js", {
     particles: {
       number: { value: 70 },
@@ -284,59 +280,71 @@
     }
   });
 
+  /* Scroll reveal */
   const cards = document.querySelectorAll(".card");
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("show");
-    });
+    entries.forEach(e => e.isIntersecting && e.target.classList.add("show"));
   }, { threshold: 0.2 });
+  cards.forEach(c => observer.observe(c));
 
-  cards.forEach(card => observer.observe(card));
-
+  /* 3D cards */
   cards.forEach(card => {
     card.addEventListener("mousemove", e => {
       const r = card.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      card.style.transform =
-        `rotateX(${-(y - r.height/2)/15}deg) rotateY(${(x - r.width/2)/15}deg)`;
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      card.style.transform = `rotateX(${-y/15}deg) rotateY(${x/15}deg)`;
     });
     card.addEventListener("mouseleave", () => {
       card.style.transform = "rotateX(0) rotateY(0)";
     });
   });
 
+  /* Typewriter */
   const texts = [
     "18 anos • Sites • Softwares • Marcas",
     "Transformando ideias em experiências digitais",
     "Criando soluções modernas e confiáveis"
   ];
-  let i = 0, j = 0, current = "";
-  const el = document.getElementById("typewriter");
+  let i=0,j=0,current="";
+  const el=document.getElementById("typewriter");
 
-  function type() {
-    if (j < texts[i].length) {
-      current += texts[i][j++];
-      el.textContent = current;
-      setTimeout(type, 50);
-    } else {
-      setTimeout(erase, 2000);
-    }
+  function type(){
+    if(j<texts[i].length){
+      current+=texts[i][j++];
+      el.textContent=current;
+      setTimeout(type,50);
+    } else setTimeout(erase,2000);
   }
-
-  function erase() {
-    if (j > 0) {
-      current = current.slice(0, -1);
-      el.textContent = current;
+  function erase(){
+    if(j>0){
+      current=current.slice(0,-1);
+      el.textContent=current;
       j--;
-      setTimeout(erase, 30);
+      setTimeout(erase,30);
     } else {
-      i = (i + 1) % texts.length;
-      setTimeout(type, 500);
+      i=(i+1)%texts.length;
+      setTimeout(type,500);
     }
   }
-
   type();
+
+  /* Letras magnéticas */
+  document.querySelectorAll(".magnetic").forEach(el => {
+    const text = el.innerText;
+    el.innerHTML = text.split("").map(l => `<span>${l}</span>`).join("");
+    el.addEventListener("mousemove", e => {
+      el.querySelectorAll("span").forEach(s => {
+        const r = s.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width/2);
+        const dy = e.clientY - (r.top + r.height/2);
+        s.style.transform = `translate(${dx/20}px, ${dy/20}px)`;
+      });
+    });
+    el.addEventListener("mouseleave", () => {
+      el.querySelectorAll("span").forEach(s => s.style.transform = "translate(0,0)");
+    });
+  });
 </script>
 
 </body>
