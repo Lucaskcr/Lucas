@@ -68,6 +68,17 @@ section{
   padding:90px 10%;
 }
 
+/* micro animação scroll */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
 .title{
   text-align:center;
   font-size:34px;
@@ -161,38 +172,38 @@ footer a{
 
 <div id="particles-js"></div>
 
-<header>
+<header class="reveal">
   <img src="banner.png" alt="Banner Lucas">
   <h1 class="hero-title"><span>Lucas</span> — Desenvolvedor & Criador Digital</h1>
   <div class="typewriter" id="typewriter"></div>
 </header>
 
 <section>
-  <h2 class="title">O que eu faço</h2>
+  <h2 class="title reveal">O que eu faço</h2>
 
   <div class="cards">
-    <div class="card">
+    <div class="card reveal">
       <h3>💻 Sites</h3>
       <p>Sites modernos, rápidos e com visual premium.</p>
     </div>
 
-    <div class="card">
-      <h3>🎨 Logos</h3>
-      <p>Identidade visual profissional para marcas.</p>
+    <div class="card reveal">
+      <h3>🎬 Edição de Vídeo</h3>
+      <p>Vídeos dinâmicos, cortes rápidos e visual profissional.</p>
     </div>
 
-    <div class="card">
-      <h3>👕 Marcas</h3>
-      <p>Criação estratégica de marcas de roupas.</p>
+    <div class="card reveal">
+      <h3>🎨 Logos & Identidade</h3>
+      <p>Identidade visual forte para marcas e negócios.</p>
     </div>
 
-    <a class="card card-idea" href="https://wa.me/5545988080346" target="_blank">
+    <a class="card card-idea reveal" href="https://wa.me/5545988080346" target="_blank">
       <h3>💡 Tem outra ideia?</h3>
       <p>Clique aqui e vamos conversar no WhatsApp.</p>
     </a>
   </div>
 
-  <div class="cta">
+  <div class="cta reveal">
     <h2>Vamos criar algo fora do comum?</h2>
     <p>Se você tem uma ideia, eu ajudo a dar forma.</p>
     <a href="https://wa.me/5545988080346" target="_blank" class="btn">
@@ -201,7 +212,7 @@ footer a{
   </div>
 </section>
 
-<footer>
+<footer class="reveal">
   © 2026 — Lucas <br>
   <a href="https://www.instagram.com/lcs_rssr" target="_blank">@lcs_rssr</a>
 </footer>
@@ -233,9 +244,9 @@ document.querySelectorAll(".card").forEach(card=>{
 
 /* TYPEWRITER */
 const texts=[
-  "18 anos • Sites • Softwares • Marcas",
-  "Transformando ideias em experiências digitais",
-  "Criando soluções modernas e confiáveis"
+  "18 anos • Sites • Vídeos • Marcas",
+  "Desenvolvedor, Designer & Editor de Vídeo",
+  "Transformando ideias em experiências digitais"
 ];
 let i=0,j=0,current="";
 const el=document.getElementById("typewriter");
@@ -261,6 +272,19 @@ function erase(){
   }
 }
 type();
+
+/* REVEAL SCROLL */
+const reveals=document.querySelectorAll(".reveal");
+function revealOnScroll(){
+  reveals.forEach(el=>{
+    const top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+      el.classList.add("active");
+    }
+  });
+}
+window.addEventListener("scroll",revealOnScroll);
+revealOnScroll();
 </script>
 
 </body>
