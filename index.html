@@ -28,7 +28,6 @@
       z-index: -1;
     }
 
-    /* ===== TEXTOS ANIMADOS ===== */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -56,7 +55,6 @@
       animation: fadeUp 1.2s ease forwards;
     }
 
-    /* TÍTULO REAGINDO AO MOUSE */
     .hero-title {
       font-size: 46px;
       font-weight: 700;
@@ -69,7 +67,6 @@
       color: #00e0ff;
     }
 
-    /* TEXTO DIGITANDO */
     .typewriter {
       margin-top: 14px;
       font-size: 18px;
@@ -105,6 +102,8 @@
       cursor: pointer;
       opacity: 0;
       transform: translateY(50px);
+      text-decoration: none;
+      color: inherit;
     }
 
     .card.show {
@@ -125,7 +124,6 @@
       transform: translateZ(20px);
     }
 
-    /* CARD CONVITE */
     .card-idea {
       background: linear-gradient(135deg, #00e0ff, #0066ff);
       color: #000;
@@ -140,7 +138,6 @@
       font-weight: 500;
     }
 
-    /* CTA */
     .cta {
       margin-top: 110px;
       padding: 80px 30px;
@@ -182,19 +179,13 @@
       box-shadow: 0 0 25px rgba(0,224,255,0.5);
     }
 
-    .btn-premium:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 40px rgba(0,224,255,0.9);
-    }
-
     .btn-whats {
       background: linear-gradient(135deg, #25d366, #128c7e);
       box-shadow: 0 0 25px rgba(37,211,102,0.6);
     }
 
-    .btn-whats:hover {
+    .btn:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 40px rgba(37,211,102,0.9);
     }
 
     footer {
@@ -210,12 +201,6 @@
       color: #fff;
       text-decoration: none;
       font-weight: 600;
-      transition: 0.3s;
-    }
-
-    footer a:hover {
-      color: #00e0ff;
-      transform: scale(1.1);
     }
   </style>
 </head>
@@ -257,10 +242,15 @@
       <p>Auxílio em posicionamento e presença online.</p>
     </div>
 
-    <div class="card card-idea">
+    <!-- CARD COM WHATSAPP -->
+    <a 
+      href="https://wa.me/5545988080346"
+      target="_blank"
+      class="card card-idea"
+    >
       <h3>💡 Tem outra ideia?</h3>
-      <p>Me chama, vamos conversar e ver como transformar isso em algo real.</p>
-    </div>
+      <p>Me chama no WhatsApp e vamos ver como transformar isso em algo real.</p>
+    </a>
   </div>
 
   <div class="cta">
@@ -285,7 +275,6 @@
 </footer>
 
 <script>
-  /* Partículas */
   particlesJS("particles-js", {
     particles: {
       number: { value: 70 },
@@ -295,7 +284,6 @@
     }
   });
 
-  /* Animação cards ao rolar */
   const cards = document.querySelectorAll(".card");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -305,7 +293,6 @@
 
   cards.forEach(card => observer.observe(card));
 
-  /* 3D cards */
   cards.forEach(card => {
     card.addEventListener("mousemove", e => {
       const r = card.getBoundingClientRect();
@@ -319,15 +306,6 @@
     });
   });
 
-  /* TÍTULO REAGE AO MOUSE */
-  const title = document.querySelector(".hero-title");
-  document.addEventListener("mousemove", e => {
-    const x = (window.innerWidth / 2 - e.clientX) / 40;
-    const y = (window.innerHeight / 2 - e.clientY) / 40;
-    title.style.transform = `translate(${x}px, ${y}px)`;
-  });
-
-  /* TYPEWRITER */
   const texts = [
     "18 anos • Sites • Softwares • Marcas",
     "Transformando ideias em experiências digitais",
