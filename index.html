@@ -113,7 +113,7 @@ footer{
 }
 footer a{color:#fff;text-decoration:none;font-weight:600}
 
-/* SCROLL REVEAL */
+/* SCROLL ANIMATION */
 .reveal{
   opacity:0;
   transform:translateY(60px);
@@ -124,7 +124,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
   transform:translateY(0);
 }
 
-/* CHAT IA */
+/* CHAT */
 .chat-btn{
   position:fixed;
   bottom:25px;
@@ -146,7 +146,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
   position:fixed;
   bottom:110px;
   right:25px;
-  width:340px;
+  width:350px;
   background:#0f1720;
   border-radius:20px;
   box-shadow:0 20px 60px rgba(0,0,0,.7);
@@ -165,7 +165,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
 .chat-messages{
   padding:15px;
   font-size:14px;
-  height:260px;
+  height:280px;
   overflow-y:auto;
 }
 
@@ -183,7 +183,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
 .quick button{
   background:#00e0ff;
   border:none;
-  padding:6px 10px;
+  padding:6px 12px;
   border-radius:20px;
   font-size:12px;
   cursor:pointer;
@@ -226,22 +226,22 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
 <div class="cards">
   <div class="card reveal">
     <h3>💻 Sites</h3>
-    <p>Sites modernos, rápidos e profissionais.</p>
+    <p>Sites modernos, rápidos e focados em conversão.</p>
   </div>
 
   <div class="card reveal">
     <h3>🎨 Identidade Visual</h3>
-    <p>Logos e marcas com presença forte.</p>
+    <p>Logos e marcas com presença profissional.</p>
   </div>
 
   <div class="card reveal">
     <h3>🎬 Edição de Vídeo</h3>
-    <p>Vídeos dinâmicos e profissionais.</p>
+    <p>Conteúdos dinâmicos para redes sociais.</p>
   </div>
 
   <a class="card card-idea reveal" href="https://wa.me/5545988080346">
     <h3>💡 Tem outra ideia?</h3>
-    <p>Clique e vamos conversar.</p>
+    <p>Clique aqui e vamos conversar.</p>
   </a>
 </div>
 
@@ -263,11 +263,15 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
 <div class="chat-box" id="chatBox">
   <div class="chat-header">Assistente do Lucas</div>
   <div class="chat-messages" id="chatMessages">
-    <div class="msg bot">👋 Oi! Tudo bem? Sou o assistente do Lucas.<br>Como posso te ajudar hoje?</div>
-    <div class="quick">
-      <button onclick="goWhats('sites')">Quero um site</button>
-      <button onclick="goWhats('logo')">Quero uma logo</button>
-      <button onclick="goWhats('video')">Quero edição de vídeo</button>
+    <div class="msg bot">
+      👋 Oi! Tudo bem?<br>
+      Sou o assistente do Lucas 😊<br>
+      Como posso te ajudar hoje?
+      <div class="quick">
+        <button onclick="goWhats('site')">Quero um site</button>
+        <button onclick="goWhats('logo')">Quero uma logo</button>
+        <button onclick="goWhats('video')">Quero edição de vídeo</button>
+      </div>
     </div>
   </div>
   <div class="chat-input">
@@ -277,6 +281,7 @@ footer a{color:#fff;text-decoration:none;font-weight:600}
 </div>
 
 <script>
+/* PARTICLES */
 particlesJS("particles-js",{particles:{number:{value:70},color:{value:"#00e0ff"},size:{value:3},move:{speed:1}}});
 
 /* TYPEWRITER */
@@ -287,14 +292,18 @@ const texts=[
 ];
 let i=0,j=0,current="";
 const el=document.getElementById("typewriter");
+
 function type(){
  if(j<texts[i].length){
   current+=texts[i][j++]; el.textContent=current; setTimeout(type,50);
  }else setTimeout(erase,2000);
 }
 function erase(){
- if(j>0){current=current.slice(0,-1); el.textContent=current; j--; setTimeout(erase,30);}
- else{i=(i+1)%texts.length; setTimeout(type,500);}
+ if(j>0){
+  current=current.slice(0,-1); el.textContent=current; j--; setTimeout(erase,30);
+ }else{
+  i=(i+1)%texts.length; setTimeout(type,500);
+ }
 }
 type();
 
@@ -325,9 +334,23 @@ function toggleChat(){
 
 function sendMsg(){
  const input=document.getElementById("userInput");
- if(!input.value.trim()) return;
- addMsg(input.value,"user");
- addMsg("Perfeito 😊 Quer saber mais sobre sites, logos ou vídeos?","bot");
+ const text=input.value.trim();
+ if(!text) return;
+ addMsg(text,"user");
+
+ let reply="Legal 😊 Quer saber mais sobre sites, logos ou vídeos?";
+ if(text.toLowerCase().includes("oi")||text.toLowerCase().includes("olá"))
+  reply="Oi! Tudo certo por aí? Em que posso te ajudar hoje?";
+ if(text.toLowerCase().includes("preço")||text.toLowerCase().includes("valor"))
+  reply="Os valores variam conforme o projeto. Quer conversar direto com o Lucas no WhatsApp?";
+ if(text.toLowerCase().includes("site"))
+  reply="Perfeito! O Lucas cria sites modernos e rápidos. Quer que eu te leve pro WhatsApp?";
+ if(text.toLowerCase().includes("logo"))
+  reply="Show! Ele cria identidades visuais profissionais. Posso te levar pro WhatsApp agora.";
+ if(text.toLowerCase().includes("video"))
+  reply="Ótima escolha! Ele trabalha com edição dinâmica pra redes sociais.";
+
+ setTimeout(()=>addMsg(reply,"bot"),500);
  input.value="";
 }
 
@@ -338,9 +361,10 @@ function addMsg(t,c){
  document.getElementById("chatMessages").appendChild(d);
 }
 
+/* WHATS */
 function goWhats(type){
  let msg="";
- if(type==="sites") msg="Olá, vi seu trabalho e estou interessado na parte de sites.";
+ if(type==="site") msg="Olá, vi seu trabalho e estou interessado na parte de sites.";
  if(type==="logo") msg="Olá, vi seu trabalho e gostaria de saber sobre criação de logos.";
  if(type==="video") msg="Olá, vi seu trabalho e quero saber sobre edição de vídeos.";
  window.open("https://wa.me/5545988080346?text="+encodeURIComponent(msg),"_blank");
